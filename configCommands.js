@@ -43,7 +43,7 @@ function pushOverTestCommand() {
   sendData("#pot");
 }
 function wakeButtonCommand() {
-  sendData("#wak,"+wakeButtonInput.vaue());
+  sendData("#wak,"+wakeButtonInput.value());
 }
 function killCommand() {
   sendData("#kill,");

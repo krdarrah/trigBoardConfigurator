@@ -135,6 +135,10 @@ function showAllParam() {
   highSpeedEnableTitle.show();
   highSpeedEnableCheckbox.show();
   highSpeedEnableButton.show();
+
+  batteryOffsetTitle.show();
+  batteryOffsetInput.show();
+  batteryOffsetButton.show();
 }
 function hideAllParam() {
   ssidTitle.hide();
@@ -267,4 +271,8 @@ function hideAllParam() {
   highSpeedEnableTitle.hide();
   highSpeedEnableCheckbox.hide();
   highSpeedEnableButton.hide();
+
+  batteryOffsetTitle.hide();
+  batteryOffsetInput.hide();
+  batteryOffsetButton.hide();
 }

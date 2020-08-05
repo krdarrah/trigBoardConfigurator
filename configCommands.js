@@ -135,7 +135,10 @@ function highSpeedCommand(){
   } else {
     sendData("#highSpdOFF");
   }
-  
+}
+
+function batteryOffsetCommand() {
+  sendData("#boff,"+batteryOffsetInput.value());
 }
 
 function staticSaveCommand() {

@@ -210,7 +210,7 @@ function setup() {
   loBatteryTitle = createElement('h4', 'Low Battery Voltage Threshold:');
   loBatteryTitle.position(10, timerStillClosedTitle.size().height+timerStillClosedTitle.y+5);
   loBatteryInput = createInput('');
-  loBatteryInput.size(30);
+  loBatteryInput.size(40);
   loBatteryInput.position(loBatteryTitle.size().width+loBatteryTitle.x+10, loBatteryTitle.size().height+loBatteryTitle.y);  
   loBatteryButton = createButton('Save');
   loBatteryButton.position(loBatteryInput.x+loBatteryInput.width, loBatteryInput.y);
@@ -383,9 +383,18 @@ function setup() {
   mqttSaveButton = createButton('Save');
   mqttSaveButton.position(mqttTopicInput.x+mqttTopicInput.width, mqttTopicInput.y);
   mqttSaveButton.mousePressed(mqttKeySaveCommand);
+  //**************************************
+  batteryOffsetTitle = createElement('h4', 'Battery Voltage  Calibration Offset:');
+  batteryOffsetTitle.position(10, mqttTopicTitle.size().height+mqttTopicTitle.y+50);
+  batteryOffsetInput = createInput('');
+  batteryOffsetInput.size(40);
+  batteryOffsetInput.position(batteryOffsetTitle.size().width+batteryOffsetTitle.x+10, batteryOffsetTitle.size().height+batteryOffsetTitle.y);  
+  batteryOffsetButton = createButton('Save');
+  batteryOffsetButton.position(batteryOffsetInput.x+batteryOffsetInput.width, batteryOffsetInput.y);
+  batteryOffsetButton.mousePressed(batteryOffsetCommand);
+  //**************************************
 
-
-  createCanvas(600, mqttTopicInput.y+100);
+  createCanvas(600, batteryOffsetInput.y+100);
 
 
   hideAllParam();

@@ -175,6 +175,12 @@ function gotValue(value) {
   if (splitString[0]=='lob') {//voltage
     loBatteryInput.value(splitString[1]);
   }
+   if (splitString[0]=='bof') {//battery offset
+    batteryOffsetInput.value(splitString[1]);
+  } 
+  
+  
+  
   if (splitString[0]=='poe') {//push over enable
     if (splitString[1]=='t') {
       pushOverEnableCheckbox.checked(true);

@@ -175,12 +175,12 @@ function gotValue(value) {
   if (splitString[0]=='lob') {//voltage
     loBatteryInput.value(splitString[1]);
   }
-   if (splitString[0]=='bof') {//battery offset
+  if (splitString[0]=='bof') {//battery offset
     batteryOffsetInput.value(splitString[1]);
   } 
-  
-  
-  
+
+
+
   if (splitString[0]=='poe') {//push over enable
     if (splitString[1]=='t') {
       pushOverEnableCheckbox.checked(true);
@@ -246,10 +246,15 @@ function gotValue(value) {
   if (splitString[0]=='ifk') {//ifttt key
     iftttInput.value(splitString[1]);
   }
+
   if (splitString[0]=='ude') {//udp enable
+    udpEnabled=false;
     if (splitString[1]=='t') {
-      udpEnableCheckbox.checked(true);
+      udpEnabled=true;
+      udptcpSelector.value('udp');
+      tcpReCountTitle.hide();
       udpTitle.show();
+      tcpTitle.hide();
       udpSSIDTitle.show();
       udpSSIDInput.show();
       udpPWTitle.show();
@@ -273,34 +278,71 @@ function gotValue(value) {
       udpBlastCountInput.show();
       udpBlastTimeTitle.show();
       udpBlastTimeInput.show();
-    } else {
-      udpEnableCheckbox.checked(false);
+    }
+  }
+  if (splitString[0]=='tce') {//tcp enable
+    tcpEnabled=false;
+    if (splitString[1]=='t') {
+      tcpEnabled=true;
+      udptcpSelector.value('tcp');
       udpTitle.hide();
-      udpSSIDTitle.hide();
-      udpSSIDInput.hide();
-      udpPWTitle.hide();
-      udpPWInput.hide();
-      udpStaticIPTitle.hide();
-      udpStaticIPInput.hide();
-      udpTargetIPTitle.hide();
-      udpTargetIPInput.hide();
+      tcpTitle.show();
+      udpSSIDTitle.show();
+      udpSSIDInput.show();
+      udpPWTitle.show();
+      udpPWInput.show();
+      udpStaticIPTitle.show();
+      udpStaticIPInput.show();
+      udpTargetIPTitle.show();
+      udpTargetIPInput.show();
       udpPortTitle.hide();
       udpPortInput.hide();
-      udpGatewayTitle.hide();
-      udpGatewayInput.hide();
-      udpSubnetTitle.hide();
-      udpSubnetInput.hide();
-      udpPrimaryDNSTitle.hide();
-      udpPrimaryDNSInput.hide();
-      udpSecondaryDNSTitle.hide();
-      udpSecondaryDNSInput.hide();
-      udpSaveButton.hide();
+      udpGatewayTitle.show();
+      udpGatewayInput.show();
+      udpSubnetTitle.show();
+      udpSubnetInput.show();
+      udpPrimaryDNSTitle.show();
+      udpPrimaryDNSInput.show();
+      udpSecondaryDNSTitle.show();
+      udpSecondaryDNSInput.show();
+      udpSaveButton.show();
+      tcpReCountTitle.show();
       udpBlastCountTitle.hide();
-      udpBlastCountInput.hide();
+      udpBlastCountInput.show();
       udpBlastTimeTitle.hide();
       udpBlastTimeInput.hide();
     }
+  }  
+
+  if (!udpEnabled && !tcpEnabled && (splitString[0]=='tce' || splitString[0]=='ude')) {
+    udptcpSelector.value('Not Enabled');
+    tcpTitle.hide();
+    udpTitle.hide();
+    udpSSIDTitle.hide();
+    udpSSIDInput.hide();
+    udpPWTitle.hide();
+    udpPWInput.hide();
+    udpStaticIPTitle.hide();
+    udpStaticIPInput.hide();
+    udpTargetIPTitle.hide();
+    udpTargetIPInput.hide();
+    udpPortTitle.hide();
+    udpPortInput.hide();
+    udpGatewayTitle.hide();
+    udpGatewayInput.hide();
+    udpSubnetTitle.hide();
+    udpSubnetInput.hide();
+    udpPrimaryDNSTitle.hide();
+    udpPrimaryDNSInput.hide();
+    udpSecondaryDNSTitle.hide();
+    udpSecondaryDNSInput.hide();
+    udpSaveButton.hide();
+    udpBlastCountTitle.hide();
+    udpBlastCountInput.hide();
+    udpBlastTimeTitle.hide();
+    udpBlastTimeInput.hide();
   }
+
   if (splitString[0]=='udt') {//udp settings
     udpTargetIPInput.value(splitString[1]);
   }

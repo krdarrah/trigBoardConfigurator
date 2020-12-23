@@ -66,9 +66,12 @@ function showAllParam() {
   iftttKeyTitle.show();
   iftttInput.show();
   iftttSaveButton.show();
-  udpEnableTitle.show();
-  udpEnableCheckbox.show();
-  udpEnableButton.show();
+  //udpEnableTitle.show();
+  //udpEnableCheckbox.show();
+  //udpEnableButton.show();
+  udptcpTitle.show();
+  udptcpSelector.show();
+  udptcpSelectorButton.show();
   udpTitle.show();
   udpSSIDTitle.show();
   udpSSIDInput.show();
@@ -141,6 +144,8 @@ function showAllParam() {
   batteryOffsetButton.show();
 }
 function hideAllParam() {
+  udpEnabled = false;
+  tcpEnabled = false;
   ssidTitle.hide();
   ssidInput.hide();
   ssidPw.hide();
@@ -205,9 +210,14 @@ function hideAllParam() {
   iftttKeyTitle.hide();
   iftttInput.hide();
   iftttSaveButton.hide();
-  udpEnableTitle.hide();
-  udpEnableCheckbox.hide();
-  udpEnableButton.hide();
+  //udpEnableTitle.hide();
+  //udpEnableCheckbox.hide();
+  //udpEnableButton.hide();
+  tcpReCountTitle.hide();
+  tcpTitle.hide();
+  udptcpTitle.hide();
+  udptcpSelector.hide();
+  udptcpSelectorButton.hide();
   udpTitle.hide();
   udpSSIDTitle.hide();
   udpSSIDInput.hide();

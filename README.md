@@ -1,2 +1,3 @@
 # trigBoard---Configurator
-https://www.kevindarrah.com/wiki/index.php?title=TrigBoard
+Latest here: https://krdarrah.github.io/trigBoardConfigurator/
+NOTE! Must be using Googel Chrome on Desktop Mac/PC/Linux

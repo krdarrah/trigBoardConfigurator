@@ -80,15 +80,15 @@ function iftttKeySaveCommand() {
   sendData("#ifk,"+iftttInput.value());
 }
 
-function udpEnableCommand() {
-  if (udpEnableCheckbox.checked()) {
-    sendData("#ude");
-  } else {
-    sendData("#udd");
-  }
-}
+//function udpEnableCommand() {
+//  if (udpEnableCheckbox.checked()) {
+//    sendData("#ude");
+//  } else {
+//    sendData("#udd");
+//  }
+//}
 
-function udpSaveCommand() {
+function udpSaveCommand() {//we also use this for saving tcp settings
   sendData("#udp," + udpSSIDInput.value() + ","+udpPWInput.value() + ","+udpStaticIPInput.value() + ","+udpTargetIPInput.value() +
     ","+udpGatewayInput.value() + ","+udpSubnetInput.value() + ","+udpPrimaryDNSInput.value() + ","+udpSecondaryDNSInput.value()+
     ","+udpPortInput.value()+ ","+udpBlastCountInput.value()+","+udpBlastTimeInput.value());
@@ -129,8 +129,8 @@ function staticEnableCommand() {
     sendData("#sipdi");
   }
 }
-function highSpeedCommand(){
-    if (highSpeedEnableCheckbox.checked()) {
+function highSpeedCommand() {
+  if (highSpeedEnableCheckbox.checked()) {
     sendData("#highSpdON");
   } else {
     sendData("#highSpdOFF");
@@ -145,7 +145,20 @@ function staticSaveCommand() {
   sendData("#sipset,"+staticIPInput.value()+","+staticGatewayInput.value()+","+staticSubnetInput.value()+","+staticPrimaryDNSInput.value()+","+staticSecondaryDNSInput.value());
 }
 
-
 function otaStartCommand() {
   sendData("#otaStart");
+}
+
+function udptcpSelectorCommand() {
+  udpEnabled = false;
+  tcpEnabled = false;
+  if (udptcpSelector.value()=="Not Enabled") {
+    sendData("#udd");
+  } else
+    if (udptcpSelector.value()=="udp") {
+      sendData("#ude");
+    } else
+      if (udptcpSelector.value()=="tcp") {
+        sendData("#tce");
+      }
 }

@@ -19,6 +19,8 @@ let LEDblinkStartTime;
 let OTAinProgress=" ";
 let OTAisActive = false;
 let firstConnected = true;
+let udpEnabled = false;
+let tcpEnabled = false;
 
 function preload() {
   trigBoardImg = loadImage('data/trigBoard.png');
@@ -45,12 +47,12 @@ function setup() {
   killButton.style('color', color(255, 0, 0));
   //killButton.style('background-color', color(122, 3, 133));
   killButton.mousePressed(killCommand);
-  
+
   otaStartButton = createButton('Initialize OTA');
   otaStartButton.position(15, 180);
 
   otaStartButton.mousePressed(otaStartCommand);
-  
+
 
   let yPositionStart = 600;
   ssidTitle = createElement('h3', 'WiFi SSID (2.4GHz)');
@@ -127,7 +129,7 @@ function setup() {
   triggerSelectorButton = createButton('Save');
   triggerSelectorButton.position(triggerSelector.x+triggerSelector.width+90, triggerSelector.y);
   triggerSelectorButton.mousePressed(triggerSelectorCommand);
-    //**************************************
+  //**************************************
   highSpeedEnableTitle = createElement('h4', 'High Speed Trigger: ');
   highSpeedEnableTitle.position(10, trigTriggerSelectionTitle.size().height+trigTriggerSelectionTitle.y+5);
   highSpeedEnableCheckbox = createCheckbox('', false);
@@ -277,23 +279,37 @@ function setup() {
   iftttSaveButton.position(iftttInput.x+pushapiInput.width, iftttInput.y);
   iftttSaveButton.mousePressed(iftttKeySaveCommand);
   //**************************************
-  udpEnableTitle = createElement('h4', 'udp enabled: ');
-  udpEnableTitle.position(10, iftttKeyTitle.size().height+iftttKeyTitle.y+5);
-  udpEnableCheckbox = createCheckbox('', false);
-  udpEnableCheckbox.position(udpEnableTitle.size().width+udpEnableTitle.x+10, udpEnableTitle.size().height+udpEnableTitle.y);
-  udpEnableButton = createButton('Save');
-  udpEnableButton.position(udpEnableTitle.size().width+udpEnableTitle.x+40, udpEnableTitle.size().height+udpEnableTitle.y);
-  udpEnableButton.mousePressed(udpEnableCommand);
+  //udpEnableTitle = createElement('h4', 'udp enabled: ');
+  //udpEnableTitle.position(10, iftttKeyTitle.size().height+iftttKeyTitle.y+5);
+  //udpEnableCheckbox = createCheckbox('', false);
+  //udpEnableCheckbox.position(udpEnableTitle.size().width+udpEnableTitle.x+10, udpEnableTitle.size().height+udpEnableTitle.y);
+  //udpEnableButton = createButton('Save');
+  //udpEnableButton.position(udpEnableTitle.size().width+udpEnableTitle.x+40, udpEnableTitle.size().height+udpEnableTitle.y);
+  //udpEnableButton.mousePressed(udpEnableCommand);
+  //**************************************
+  udptcpTitle = createElement('h4', 'udp or tcp: ');
+  udptcpTitle.position(10, iftttKeyTitle.size().height+iftttKeyTitle.y+5);
+  udptcpSelector = createSelect();
+  udptcpSelector.position(udptcpTitle.x+udptcpTitle.size().width+10, udptcpTitle.size().height+udptcpTitle.y);
+  udptcpSelector.option('Not Enabled');
+  udptcpSelector.option('udp');
+  udptcpSelector.option('tcp');
+  udptcpSelectorButton = createButton('Save');
+  udptcpSelectorButton.position(udptcpSelector.x+udptcpSelector.width+100, udptcpSelector.y);
+  udptcpSelectorButton.mousePressed(udptcpSelectorCommand);
+
   //**************************************
   udpTitle = createElement('h4', 'udp Settings:');
-  udpTitle.position(30, udpEnableTitle.size().height+udpEnableTitle.y+5);
+  tcpTitle = createElement('h4', 'tcp Settings: (supported in FW 12/19/20 or newer');
+  tcpTitle.position(30, udptcpTitle.size().height+udptcpTitle.y+5);
+  udpTitle.position(30, udptcpTitle.size().height+udptcpTitle.y+5);
   udpSSIDTitle = createElement('h4', 'SSID:');
   udpSSIDTitle.position(50, udpTitle.size().height+udpTitle.y+5);
   udpSSIDInput = createInput('');
   udpSSIDInput.position(udpSSIDTitle.size().width+udpSSIDTitle.x+10, udpSSIDTitle.size().height+udpSSIDTitle.y);
   udpPWTitle = createElement('h4', 'Password:');
   udpPWTitle.position(50, udpSSIDTitle.size().height+udpSSIDTitle.y+5);
-  udpPWInput = createInput('');
+  udpPWInput = createInput('', 'password');
   udpPWInput.position(udpPWTitle.size().width+udpPWTitle.x+10, udpPWTitle.size().height+udpPWTitle.y);
   udpStaticIPTitle = createElement('h4', 'Static IP:');
   udpStaticIPTitle.position(50, udpPWTitle.size().height+udpPWTitle.y+5);
@@ -324,6 +340,8 @@ function setup() {
   udpSecondaryDNSTitle.position(50, udpPrimaryDNSTitle.size().height+udpPrimaryDNSTitle.y+5);
   udpSecondaryDNSInput = createInput('');
   udpSecondaryDNSInput.position(udpSecondaryDNSTitle.size().width+udpSecondaryDNSTitle.x+10, udpSecondaryDNSTitle.size().height+udpSecondaryDNSTitle.y);
+  tcpReCountTitle = createElement('h4', 'Retries:');
+  tcpReCountTitle.position(50, udpSecondaryDNSTitle.size().height+udpSecondaryDNSTitle.y+5);
   udpBlastCountTitle = createElement('h4', 'Blast Count:');
   udpBlastCountTitle.position(50, udpSecondaryDNSTitle.size().height+udpSecondaryDNSTitle.y+5);
   udpBlastCountInput = createInput('');

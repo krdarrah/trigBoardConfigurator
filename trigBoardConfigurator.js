@@ -300,7 +300,7 @@ function setup() {
 
   //**************************************
   udpTitle = createElement('h4', 'udp Settings:');
-  tcpTitle = createElement('h4', 'tcp Settings: (supported in FW 12/19/20 or newer');
+  tcpTitle = createElement('h4', 'tcp Settings: (supported in FW 12/20/20 or newer');
   tcpTitle.position(30, udptcpTitle.size().height+udptcpTitle.y+5);
   udpTitle.position(30, udptcpTitle.size().height+udptcpTitle.y+5);
   udpSSIDTitle = createElement('h4', 'SSID:');

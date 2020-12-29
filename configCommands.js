@@ -504,3 +504,10 @@ function udptcpSelectorCommand() {
         sendData("#tce");
       }
 }
+
+function readDocsCommand() {
+  window.open('https://trigboard-docs.readthedocs.io/en/latest/configurator.html');
+}
+function contactCommand() {
+  window.open('https://www.kdcircuits.com#contact');
+}

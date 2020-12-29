@@ -30,35 +30,43 @@ function preload() {
 
 function setup() {
 
-
-
-
   // Create a p5ble class
   console.log("setting up");
   blueTooth = new p5ble();
 
-  connectButton = createButton('Connect');
+  connectButton = createButton('CONNECT');
   connectButton.mousePressed(connectToBle);
   connectButton.position(15, 150);
+  connectButton.style('color', color(255));
+  connectButton.style('background-color', color(77, 158, 106));
+
   LEDblinkStartTime=millis();
 
   killButton = createButton('DISCONNECT');
   killButton.position(15, 150);
-  killButton.style('color', color(255, 0, 0));
-  //killButton.style('background-color', color(122, 3, 133));
+  killButton.style('color', color(255));
+  killButton.style('background-color', color(208, 93, 73));
   killButton.mousePressed(killCommand);
 
   otaStartButton = createButton('Initialize OTA');
   otaStartButton.position(15, 180);
-
   otaStartButton.mousePressed(otaStartCommand);
 
+  readDocsButton = createButton('REFERENCE');
+  readDocsButton.position(380, 150);
+  readDocsButton.style('color', color(255));
+  readDocsButton.style('background-color', color(62, 129, 182));
+  readDocsButton.mousePressed(readDocsCommand);
+
+  contactButton = createButton('CONTACT<br>or<br>REPORT ISSUES');
+  contactButton.position(380, 180);
+  contactButton.style('color', color(255));
+  contactButton.style('background-color', color(62, 129, 182));
+  contactButton.mousePressed(contactCommand);
 
   let yPositionStart = 600;
   ssidTitle = createElement('h3', 'WiFi SSID (2.4GHz)');
   ssidTitle.position(10, yPositionStart);
-
-
   ssidInput = createInput('');
   ssidInput.position(ssidTitle.size().width+ssidTitle.x+10, ssidTitle.size().height+ssidTitle.y);
 

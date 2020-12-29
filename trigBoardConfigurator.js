@@ -105,7 +105,7 @@ function setup() {
   wifiTimeoutTitle = createElement('h4', 'WiFi Timeout (seconds 1-60)');
   wifiTimeoutTitle.position(10, staticSecondaryDNSTitle.size().height+staticSecondaryDNSTitle.y+5);
   wifiTimeoutInput = createInput('');
-  wifiTimeoutInput.size(20);
+  wifiTimeoutInput.size(30);
   wifiTimeoutInput.position(wifiTimeoutTitle.size().width+wifiTimeoutTitle.x+10, wifiTimeoutTitle.size().height+wifiTimeoutTitle.y);  
   wifiTimeoutButton = createButton('Save');
   wifiTimeoutButton.position(wifiTimeoutInput.x+wifiTimeoutInput.width, wifiTimeoutInput.y);
@@ -127,7 +127,7 @@ function setup() {
   triggerSelector.option('Contact Open');
   triggerSelector.option('Open and Close');
   triggerSelectorButton = createButton('Save');
-  triggerSelectorButton.position(triggerSelector.x+triggerSelector.width+90, triggerSelector.y);
+  triggerSelectorButton.position(triggerSelector.x+triggerSelector.width+100, triggerSelector.y);
   triggerSelectorButton.mousePressed(triggerSelectorCommand);
   //**************************************
   highSpeedEnableTitle = createElement('h4', 'High Speed Trigger: ');

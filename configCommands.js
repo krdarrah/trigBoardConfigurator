@@ -430,14 +430,15 @@ function mqttHomeAssistantPrefixSaveCommand() {
     mqttHomeAssistantPrefixInput.value(sanitizer);
     return;
   }
-  sendData("#mqhapr", mqttHomeAssistantPrefixInput.value());
+  sendData("#mqhapr,"+ mqttHomeAssistantPrefixInput.value());
+  // sendData("#name," + trigBoardNameInput.value());
 }
 
 function mqttHomeAssistantDiscoverySaveCommand(){
   if (mqttHomeAssistantDiscoveryCheckbox.checked()) {
-    sendData("#mqhadien");
+    sendData("#hadien");
   } else {
-    sendData("#mqhadidi");
+    sendData("#hadidi");
   }
 }
 function staticEnableCommand() {

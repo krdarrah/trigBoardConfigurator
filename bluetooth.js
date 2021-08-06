@@ -447,18 +447,30 @@ function gotValue(value) {
       mqttEnableHomeAssistantCheckbox.checked(true);
       mqttHomeAssistantPrefixTitle.show();
       mqttHomeAssistantPrefixInput.show();
-      mqttEnableHomeAssistantSaveButton.show();
+      mqttHomeAssistantDiscoveryTitle.show();
+      mqttHomeAssistantDiscoveryCheckbox.show();
       mqttHomeAssistantPrefixSaveButton.show();
+      mqttHomeAssistantDiscoverySaveButton.show();
     } else {
       mqttEnableHomeAssistantCheckbox.checked(false);
       mqttHomeAssistantPrefixTitle.hide();
       mqttHomeAssistantPrefixInput.hide();
-      mqttEnableHomeAssistantSaveButton.hide();
+      mqttHomeAssistantDiscoveryTitle.hide();
+      mqttHomeAssistantDiscoveryCheckbox.hide();
       mqttHomeAssistantPrefixSaveButton.hide();
+      mqttHomeAssistantDiscoverySaveButton.hide();
     }
   }
   if (splitString[0] == 'hapr') { //mqtt homeassistant topic prefix
     mqttHomeAssistantPrefixInput.value(splitString[1]);
+  }
+  if (splitString[0] == 'disen') { //home assistant dsicovery
+    if (splitString[1] == 't') {
+      mqttHomeAssistantDiscoveryCheckbox.checked(true);
+    } else {
+
+      mqttHomeAssistantDiscoveryCheckbox.checked(false);
+    }
   }
   if (splitString[0] == 'mqsu') { //mqtt user 
     mqttUserInput.value(splitString[1]);

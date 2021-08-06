@@ -147,8 +147,11 @@ function showAllParam() {
   mqttEnableHomeAssistantCheckbox.show();
   mqttHomeAssistantPrefixTitle.show();
   mqttHomeAssistantPrefixInput.show();
+  mqttHomeAssistantDiscoveryTitle.show();
+  mqttHomeAssistantDiscoveryCheckbox.show();
   mqttEnableHomeAssistantSaveButton.show();
-  mqttHomeAssistantPrefixSaveButton.hide();
+  mqttHomeAssistantPrefixSaveButton.show();
+  mqttHomeAssistantDiscoverySaveButton.show();
 }
 function hideAllParam() {
   udpEnabled = false;
@@ -297,6 +300,9 @@ function hideAllParam() {
   mqttEnableHomeAssistantCheckbox.hide();
   mqttHomeAssistantPrefixTitle.hide();
   mqttHomeAssistantPrefixInput.hide();
+  mqttHomeAssistantDiscoveryTitle.hide();
+  mqttHomeAssistantDiscoveryCheckbox.hide();
   mqttEnableHomeAssistantSaveButton.hide();
   mqttHomeAssistantPrefixSaveButton.hide();
+  mqttHomeAssistantDiscoverySaveButton.hide();
 }

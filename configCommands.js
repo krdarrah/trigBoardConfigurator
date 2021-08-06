@@ -6,7 +6,7 @@ function checkUserString(userString, lengthCheck) {
   if (match(userString, "#") != null || match(userString, ",") != null) {
     return 'error no # or comma';
   }
-  if (userString.length >=lengthCheck) {
+  if (userString.length >= lengthCheck) {
     return 'error too long';
   }
   return null;
@@ -14,14 +14,14 @@ function checkUserString(userString, lengthCheck) {
 
 function checkUserIPaddress(userIP) {
   let splitNumbers = split(userIP, '.');
-  if (splitNumbers.length>4 || splitNumbers.length<4) {
+  if (splitNumbers.length > 4 || splitNumbers.length < 4) {
     return 'error not valid';
   }
-  for (let i=0; i<4; i++) {
+  for (let i = 0; i < 4; i++) {
     if (isNaN(splitNumbers[i])) {
       return 'error not valid';
     }
-    if (splitNumbers[i]>255 || splitNumbers[i]<0) {
+    if (splitNumbers[i] > 255 || splitNumbers[i] < 0) {
       return 'error not valid';
     }
   }
@@ -33,24 +33,25 @@ function checkUserIPaddress(userIP) {
 
 function saveWiFi() {
   let sanitizer = checkUserString(ssidInput.value(), 50);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     ssidInput.value(sanitizer);
     return;
   }
   sanitizer = checkUserString(pwInput.value(), 50);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     ssidInput.value(sanitizer);
     return;
   }
-  if (pwInput.value().length <8) {
+  if (pwInput.value().length < 8) {
     ssidInput.value('error pw too short');
     return;
   }
-  sendData("#wifi,"+ssidInput.value() + "," + pwInput.value());
+  sendData("#wifi," + ssidInput.value() + "," + pwInput.value());
 }
+
 function wifiTimeoutCommand() {
   let sanitizer = checkUserString(wifiTimeoutInput.value(), 3);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     wifiTimeoutInput.value("err");
     return;
   }
@@ -58,45 +59,47 @@ function wifiTimeoutCommand() {
     wifiTimeoutInput.value("err");
     return;
   }
-  if (wifiTimeoutInput.value() > 60 || wifiTimeoutInput.value() <=0) {
+  if (wifiTimeoutInput.value() > 60 || wifiTimeoutInput.value() <= 0) {
     wifiTimeoutInput.value("err");
     return;
   }
-  sendData("#tout,"+wifiTimeoutInput.value());
+  sendData("#tout," + wifiTimeoutInput.value());
 }
 
 function trigBoardNameCommand() {
   let sanitizer = checkUserString(trigBoardNameInput.value(), 50);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     trigBoardNameInput.value(sanitizer);
     return;
   }
-  sendData("#name,"+trigBoardNameInput.value());
+  sendData("#name," + trigBoardNameInput.value());
 }
 
 function triggerSelectorCommand() {
-  sendData("#sel,"+triggerSelector.value());
+  sendData("#sel," + triggerSelector.value());
 }
 
 function triggerOpensCommand() {
   let sanitizer = checkUserString(triggerOpensInput.value(), 50);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     triggerOpensInput.value(sanitizer);
     return;
   }
-  sendData("#ope,"+triggerOpensInput.value());
+  sendData("#ope," + triggerOpensInput.value());
 }
+
 function triggerClosesCommand() {
   let sanitizer = checkUserString(triggerClosesInput.value(), 50);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     triggerClosesInput.value(sanitizer);
     return;
   }
-  sendData("#clo,"+triggerClosesInput.value());
+  sendData("#clo," + triggerClosesInput.value());
 }
+
 function timerCommand() {
   let sanitizer = checkUserString(timerInput.value(), 4);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     timerInput.value("err");
     return;
   }
@@ -104,35 +107,38 @@ function timerCommand() {
     timerInput.value("err");
     return;
   }
-  if (timerInput.value() > 255 || timerInput.value() <=0) {
+  if (timerInput.value() > 255 || timerInput.value() <= 0) {
     timerInput.value("err");
     return;
   }
-  sendData("#tim,"+timerInput.value());
+  sendData("#tim," + timerInput.value());
 }
+
 function timerSelectorCommand() {
-  sendData("#tse,"+trim(timerSelector.value()));
+  sendData("#tse," + trim(timerSelector.value()));
 }
 
 function timerStillOpenCommand() {
   let sanitizer = checkUserString(timerStillOpenInput.value(), 50);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     timerStillOpenInput.value(sanitizer);
     return;
   }
-  sendData("#tso,"+timerStillOpenInput.value());
+  sendData("#tso," + timerStillOpenInput.value());
 }
+
 function timerStillClosedCommand() {
   let sanitizer = checkUserString(timerStillClosedInput.value(), 50);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     timerStillClosedInput.value(sanitizer);
     return;
   }
-  sendData("#tsc,"+timerStillClosedInput.value());
+  sendData("#tsc," + timerStillClosedInput.value());
 }
+
 function loBatteryCommand() {
   let sanitizer = checkUserString(loBatteryInput.value(), 5);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     loBatteryInput.value("err");
     return;
   }
@@ -140,36 +146,40 @@ function loBatteryCommand() {
     loBatteryInput.value("err");
     return;
   }
-  if (loBatteryInput.value() > 255 || loBatteryInput.value() <=0) {
+  if (loBatteryInput.value() > 255 || loBatteryInput.value() <= 0) {
     loBatteryInput.value("err");
     return;
   }
-  sendData("#lob,"+loBatteryInput.value());
+  sendData("#lob," + loBatteryInput.value());
 }
+
 function pushOverSaveCommand() {
   let sanitizer = checkUserString(pushuserInput.value(), 50);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     pushuserInput.value("");
     return;
   }
   sanitizer = checkUserString(pushapiInput.value(), 50);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     pushapiInput.value("");
     return;
   }
-  sendData("#pov,"+pushuserInput.value() +","+pushapiInput.value());
+  sendData("#pov," + pushuserInput.value() + "," + pushapiInput.value());
 }
+
 function pushOverTestCommand() {
   sendData("#pot");
 }
+
 function wakeButtonCommand() {
   let sanitizer = checkUserString(wakeButtonInput.value(), 50);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     wakeButtonInput.value(sanitizer);
     return;
   }
-  sendData("#wak,"+wakeButtonInput.value());
+  sendData("#wak," + wakeButtonInput.value());
 }
+
 function killCommand() {
   sendData("#kill,");
 }
@@ -192,11 +202,11 @@ function pushSaferEnableCommand() {
 
 function pushSaferKeySaveCommand() {
   let sanitizer = checkUserString(pushSaferInput.value(), 50);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     pushSaferInput.value("");
     return;
   }
-  sendData("#psk,"+pushSaferInput.value());
+  sendData("#psk," + pushSaferInput.value());
 }
 
 function iftttEnableCommand() {
@@ -206,13 +216,14 @@ function iftttEnableCommand() {
     sendData("#ifd");
   }
 }
+
 function iftttKeySaveCommand() {
   let sanitizer = checkUserString(iftttInput.value(), 50);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     iftttInput.value("");
     return;
   }
-  sendData("#ifk,"+iftttInput.value());
+  sendData("#ifk," + iftttInput.value());
 }
 
 //function udpEnableCommand() {
@@ -223,79 +234,79 @@ function iftttKeySaveCommand() {
 //  }
 //}
 
-function udpSaveCommand() {//we also use this for saving tcp settings
+function udpSaveCommand() { //we also use this for saving tcp settings
   let sanitize = checkUserString(udpSSIDInput.value(), 50);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpSSIDInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(udpPWInput.value(), 50);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpSSIDInput.value(sanitize);
     return;
   }
   sanitize = checkUserIPaddress(udpStaticIPInput.value());
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpStaticIPInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(udpStaticIPInput.value(), 20);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpStaticIPInput.value(sanitize);
     return;
   }
   sanitize = checkUserIPaddress(udpTargetIPInput.value());
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpTargetIPInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(udpTargetIPInput.value(), 20);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpTargetIPInput.value(sanitize);
     return;
-  }  
+  }
   sanitize = checkUserIPaddress(udpGatewayInput.value());
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpGatewayInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(udpGatewayInput.value(), 20);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpGatewayInput.value(sanitize);
     return;
   }
   sanitize = checkUserIPaddress(udpSubnetInput.value());
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpSubnetInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(udpSubnetInput.value(), 20);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpSubnetInput.value(sanitize);
     return;
   }
   sanitize = checkUserIPaddress(udpPrimaryDNSInput.value());
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpPrimaryDNSInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(udpPrimaryDNSInput.value(), 20);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpPrimaryDNSInput.value(sanitize);
     return;
   }
   sanitize = checkUserIPaddress(udpSecondaryDNSInput.value());
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpSecondaryDNSInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(udpSecondaryDNSInput.value(), 20);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     udpSecondaryDNSInput.value(sanitize);
     return;
   }
   sanitizer = checkUserString(udpPortInput.value(), 10);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     udpPortInput.value("err");
     return;
   }
@@ -303,12 +314,12 @@ function udpSaveCommand() {//we also use this for saving tcp settings
     udpPortInput.value("err");
     return;
   }
-  if (udpPortInput.value() <=0) {
+  if (udpPortInput.value() <= 0) {
     udpPortInput.value("err");
     return;
   }
   sanitizer = checkUserString(udpBlastCountInput.value(), 10);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     udpBlastCountInput.value("err");
     return;
   }
@@ -316,12 +327,12 @@ function udpSaveCommand() {//we also use this for saving tcp settings
     udpBlastCountInput.value("err");
     return;
   }
-  if (udpBlastCountInput.value() > 100 || udpBlastCountInput.value() <=0) {
+  if (udpBlastCountInput.value() > 100 || udpBlastCountInput.value() <= 0) {
     udpBlastCountInput.value("err");
     return;
   }
   sanitizer = checkUserString(udpBlastTimeInput.value(), 10);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     udpBlastTimeInput.value("err");
     return;
   }
@@ -329,17 +340,17 @@ function udpSaveCommand() {//we also use this for saving tcp settings
     udpBlastTimeInput.value("err");
     return;
   }
-  if (udpBlastTimeInput.value() > 100 || udpBlastTimeInput.value() <=0) {
+  if (udpBlastTimeInput.value() > 100 || udpBlastTimeInput.value() <= 0) {
     udpBlastTimeInput.value("err");
     return;
   }
-  sendData("#udp," + udpSSIDInput.value() + ","+udpPWInput.value() + ","+udpStaticIPInput.value() + ","+udpTargetIPInput.value() +
-    ","+udpGatewayInput.value() + ","+udpSubnetInput.value() + ","+udpPrimaryDNSInput.value() + ","+udpSecondaryDNSInput.value()+
-    ","+udpPortInput.value()+ ","+udpBlastCountInput.value()+","+udpBlastTimeInput.value());
+  sendData("#udp," + udpSSIDInput.value() + "," + udpPWInput.value() + "," + udpStaticIPInput.value() + "," + udpTargetIPInput.value() +
+    "," + udpGatewayInput.value() + "," + udpSubnetInput.value() + "," + udpPrimaryDNSInput.value() + "," + udpSecondaryDNSInput.value() +
+    "," + udpPortInput.value() + "," + udpBlastCountInput.value() + "," + udpBlastTimeInput.value());
 }
 
 function timerUnitSelectorCommand() {
-  if (timerUnitSelector.value()=='Minutes') {
+  if (timerUnitSelector.value() == 'Minutes') {
     sendData("#rtcme");
   } else {
     sendData("#rtcmd");
@@ -353,29 +364,30 @@ function mqttEnableCommand() {
     sendData("#mqdi");
   }
 }
+
 function mqttKeySaveCommand() {
   let sanitize = checkUserString(mqttUserInput.value(), 50);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     mqttUserInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(mqttPWInput.value(), 50);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     mqttUserInput.value(sanitize);
     return;
   }
   sanitize = checkUserIPaddress(mqttServerInput.value());
-  if (sanitize!=null) {
+  if (sanitize != null) {
     mqttServerInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(mqttServerInput.value(), 20);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     mqttServerInput.value(sanitize);
     return;
   }
   sanitizer = checkUserString(mqttPortInput.value(), 10);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     mqttPortInput.value("err");
     return;
   }
@@ -383,16 +395,16 @@ function mqttKeySaveCommand() {
     mqttPortInput.value("err");
     return;
   }
-  if (mqttPortInput.value() <=0) {
+  if (mqttPortInput.value() <= 0) {
     mqttPortInput.value("err");
     return;
   }
   sanitize = checkUserString(mqttTopicInput.value(), 50);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     mqttTopicInput.value(sanitize);
     return;
   }
-  sendData("#mqset,"+mqttPortInput.value()+","+mqttServerInput.value()+","+mqttTopicInput.value()+","+mqttPWInput.value()+","+mqttUserInput.value());
+  sendData("#mqset," + mqttPortInput.value() + "," + mqttServerInput.value() + "," + mqttTopicInput.value() + "," + mqttPWInput.value() + "," + mqttUserInput.value());
 }
 
 
@@ -404,6 +416,31 @@ function mqttSecEnableCommand() {
   }
 }
 
+function mqttEnableHomeAssistantSaveCommand() {
+  if (mqttEnableHomeAssistantCheckbox.checked()) {
+    sendData("#mqhaen");
+  } else {
+    sendData("#mqhadi");
+  }
+}
+
+function mqttHomeAssistantPrefixSaveCommand() {
+  sanitizer = checkUserString(mqttHomeAssistantPrefixInput.value(), 50);
+  if (sanitizer != null) {
+    mqttHomeAssistantPrefixInput.value(sanitizer);
+    return;
+  }
+  sendData("#mqhapr,"+ mqttHomeAssistantPrefixInput.value());
+  // sendData("#name," + trigBoardNameInput.value());
+}
+
+function mqttHomeAssistantDiscoverySaveCommand(){
+  if (mqttHomeAssistantDiscoveryCheckbox.checked()) {
+    sendData("#hadien");
+  } else {
+    sendData("#hadidi");
+  }
+}
 function staticEnableCommand() {
   if (staticEnableCheckbox.checked()) {
     sendData("#sipen");
@@ -411,6 +448,7 @@ function staticEnableCommand() {
     sendData("#sipdi");
   }
 }
+
 function highSpeedCommand() {
   if (highSpeedEnableCheckbox.checked()) {
     sendData("#highSpdON");
@@ -421,7 +459,7 @@ function highSpeedCommand() {
 
 function batteryOffsetCommand() {
   let sanitizer = checkUserString(batteryOffsetInput.value(), 10);
-  if (sanitizer!=null) {
+  if (sanitizer != null) {
     batteryOffsetInput.value("err");
     return;
   }
@@ -430,61 +468,61 @@ function batteryOffsetCommand() {
     return;
   }
 
-  sendData("#boff,"+batteryOffsetInput.value());
+  sendData("#boff," + batteryOffsetInput.value());
 }
 
 function staticSaveCommand() {
   let sanitize = checkUserIPaddress(staticIPInput.value());
-  if (sanitize!=null) {
+  if (sanitize != null) {
     staticIPInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(staticIPInput.value(), 20);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     staticIPInput.value(sanitize);
     return;
   }
   sanitize = checkUserIPaddress(staticGatewayInput.value());
-  if (sanitize!=null) {
+  if (sanitize != null) {
     staticGatewayInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(staticGatewayInput.value(), 20);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     staticGatewayInput.value(sanitize);
     return;
   }
   sanitize = checkUserIPaddress(staticSubnetInput.value());
-  if (sanitize!=null) {
+  if (sanitize != null) {
     staticSubnetInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(staticSubnetInput.value(), 20);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     staticSubnetInput.value(sanitize);
     return;
-  } 
+  }
   sanitize = checkUserIPaddress(staticPrimaryDNSInput.value());
-  if (sanitize!=null) {
+  if (sanitize != null) {
     staticPrimaryDNSInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(staticPrimaryDNSInput.value(), 20);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     staticPrimaryDNSInput.value(sanitize);
     return;
-  } 
+  }
   sanitize = checkUserIPaddress(staticSecondaryDNSInput.value());
-  if (sanitize!=null) {
+  if (sanitize != null) {
     staticSecondaryDNSInput.value(sanitize);
     return;
   }
   sanitize = checkUserString(staticSecondaryDNSInput.value(), 20);
-  if (sanitize!=null) {
+  if (sanitize != null) {
     staticSecondaryDNSInput.value(sanitize);
     return;
-  } 
-  sendData("#sipset,"+staticIPInput.value()+","+staticGatewayInput.value()+","+staticSubnetInput.value()+","+staticPrimaryDNSInput.value()+","+staticSecondaryDNSInput.value());
+  }
+  sendData("#sipset," + staticIPInput.value() + "," + staticGatewayInput.value() + "," + staticSubnetInput.value() + "," + staticPrimaryDNSInput.value() + "," + staticSecondaryDNSInput.value());
 }
 
 function otaStartCommand() {
@@ -494,20 +532,21 @@ function otaStartCommand() {
 function udptcpSelectorCommand() {
   udpEnabled = false;
   tcpEnabled = false;
-  if (udptcpSelector.value()=="Not Enabled") {
+  if (udptcpSelector.value() == "Not Enabled") {
     sendData("#udd");
   } else
-    if (udptcpSelector.value()=="udp") {
-      sendData("#ude");
-    } else
-      if (udptcpSelector.value()=="tcp") {
-        sendData("#tce");
-      }
+  if (udptcpSelector.value() == "udp") {
+    sendData("#ude");
+  } else
+  if (udptcpSelector.value() == "tcp") {
+    sendData("#tce");
+  }
 }
 
 function readDocsCommand() {
   window.open('https://trigboard-docs.readthedocs.io/en/latest/configurator.html');
 }
+
 function contactCommand() {
   window.open('https://www.kdcircuits.com#contact');
 }

@@ -142,6 +142,16 @@ function showAllParam() {
   batteryOffsetTitle.show();
   batteryOffsetInput.show();
   batteryOffsetButton.show();
+
+  mqttEnableHomeAssistantTitle.show();
+  mqttEnableHomeAssistantCheckbox.show();
+  mqttHomeAssistantPrefixTitle.show();
+  mqttHomeAssistantPrefixInput.show();
+  mqttHomeAssistantDiscoveryTitle.show();
+  mqttHomeAssistantDiscoveryCheckbox.show();
+  mqttEnableHomeAssistantSaveButton.show();
+  mqttHomeAssistantPrefixSaveButton.show();
+  mqttHomeAssistantDiscoverySaveButton.show();
 }
 function hideAllParam() {
   udpEnabled = false;
@@ -285,4 +295,14 @@ function hideAllParam() {
   batteryOffsetTitle.hide();
   batteryOffsetInput.hide();
   batteryOffsetButton.hide();
+
+  mqttEnableHomeAssistantTitle.hide();
+  mqttEnableHomeAssistantCheckbox.hide();
+  mqttHomeAssistantPrefixTitle.hide();
+  mqttHomeAssistantPrefixInput.hide();
+  mqttHomeAssistantDiscoveryTitle.hide();
+  mqttHomeAssistantDiscoveryCheckbox.hide();
+  mqttEnableHomeAssistantSaveButton.hide();
+  mqttHomeAssistantPrefixSaveButton.hide();
+  mqttHomeAssistantDiscoverySaveButton.hide();
 }

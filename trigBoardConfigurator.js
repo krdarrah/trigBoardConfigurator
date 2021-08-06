@@ -403,15 +403,43 @@ function setup() {
   mqttServerInput = createInput('');
   mqttServerInput.position(mqttServerTitle.size().width+mqttServerTitle.x+10, mqttServerTitle.size().height+mqttServerTitle.y);
   mqttTopicTitle = createElement('h4', 'Topic:');
-  mqttTopicTitle.position(50, mqttServerTitle.size().height+mqttServerTitle.y+5);
+  mqttTopicTitle.position(50, mqttServerTitle.size().height+mqttServerTitle.y+5);/**** */
   mqttTopicInput = createInput('');
   mqttTopicInput.position(mqttTopicTitle.size().width+mqttTopicTitle.x+10, mqttTopicTitle.size().height+mqttTopicTitle.y);
   mqttSaveButton = createButton('Save');
   mqttSaveButton.position(mqttTopicInput.x+mqttTopicInput.width, mqttTopicInput.y);
   mqttSaveButton.mousePressed(mqttKeySaveCommand);
+  //***************************************
+  mqttEnableHomeAssistantTitle = createElement('h4','Send Home Assistant:');
+  mqttEnableHomeAssistantTitle.position(30, mqttTopicTitle.size().height+mqttTopicTitle.y+5);
+  mqttEnableHomeAssistantCheckbox = createCheckbox('', false);
+  mqttEnableHomeAssistantCheckbox.position(mqttEnableHomeAssistantTitle.size().width+mqttEnableHomeAssistantTitle.x+10, mqttEnableHomeAssistantTitle.size().height+mqttEnableHomeAssistantTitle.y);
+  mqttEnableHomeAssistantSaveButton= createButton('Save');
+  mqttEnableHomeAssistantSaveButton.position(mqttEnableHomeAssistantTitle.size().width+mqttEnableHomeAssistantTitle.x+40, mqttEnableHomeAssistantTitle.size().height+mqttEnableHomeAssistantTitle.y)
+  mqttEnableHomeAssistantSaveButton.mousePressed(mqttEnableHomeAssistantSaveCommand)
+  mqttHomeAssistantPrefixTitle = createElement('h4', 'HomeAssistant prefix topic:');
+  mqttHomeAssistantPrefixTitle.position(50,mqttEnableHomeAssistantTitle.size().height+mqttEnableHomeAssistantTitle.y+5);
+  mqttHomeAssistantPrefixInput = createInput('homeassistant');
+  mqttHomeAssistantPrefixInput.position(mqttHomeAssistantPrefixTitle.size().width+mqttHomeAssistantPrefixTitle.x+10,mqttHomeAssistantPrefixTitle.size().height+mqttHomeAssistantPrefixTitle.y);
+  mqttHomeAssistantPrefixSaveButton = createButton('Save');
+  mqttHomeAssistantPrefixSaveButton.position(mqttHomeAssistantPrefixInput.x+mqttHomeAssistantPrefixInput.width,mqttHomeAssistantPrefixInput.y);
+  mqttHomeAssistantPrefixSaveButton.mousePressed(mqttHomeAssistantPrefixSaveCommand);
+  
+  mqttHomeAssistantDiscoveryTitle = createElement('h4','Use Autodiscovery:');
+  mqttHomeAssistantDiscoveryTitle.position(50, mqttHomeAssistantPrefixTitle.size().height+mqttHomeAssistantPrefixTitle.y+5);
+  mqttHomeAssistantDiscoveryCheckbox = createCheckbox('', false);
+  mqttHomeAssistantDiscoveryCheckbox.position(mqttHomeAssistantDiscoveryTitle.size().width+mqttHomeAssistantDiscoveryTitle.x+10, mqttHomeAssistantDiscoveryTitle.size().height+mqttHomeAssistantDiscoveryTitle.y);
+  mqttHomeAssistantDiscoverySaveButton= createButton('Save');
+  mqttHomeAssistantDiscoverySaveButton.position(mqttHomeAssistantDiscoveryTitle.size().width+mqttHomeAssistantDiscoveryTitle.x+40, mqttHomeAssistantDiscoveryTitle.size().height+mqttHomeAssistantDiscoveryTitle.y);
+  mqttHomeAssistantDiscoverySaveButton.mousePressed(mqttHomeAssistantDiscoverySaveCommand)
+  // mqttEnableHomeAssistantSaveButton.position(mqttEnableHomeAssistantTitle.size().width+mqttEnableHomeAssistantTitle.x+40, mqttEnableHomeAssistantTitle.size().height+mqttEnableHomeAssistantTitle.y)
+
+
+  mqttHomeAssistantDiscoverySaveButton.mousePressed(mqttHomeAssistantDiscoverySaveCommand);
+
   //**************************************
   batteryOffsetTitle = createElement('h4', 'Battery Voltage  Calibration Offset:');
-  batteryOffsetTitle.position(10, mqttTopicTitle.size().height+mqttTopicTitle.y+50);
+  batteryOffsetTitle.position(10, mqttHomeAssistantDiscoveryTitle.size().height+mqttHomeAssistantDiscoveryTitle.y+5);
   batteryOffsetInput = createInput('');
   batteryOffsetInput.size(40);
   batteryOffsetInput.position(batteryOffsetTitle.size().width+batteryOffsetTitle.x+10, batteryOffsetTitle.size().height+batteryOffsetTitle.y);  

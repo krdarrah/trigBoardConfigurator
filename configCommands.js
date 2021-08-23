@@ -29,7 +29,99 @@ function checkUserIPaddress(userIP) {
 }
 //******************
 
+function clockTimerEnableCommand() {
+  if (clockTimerEnableCheckbox.checked()) {
+    sendData("#clken");
+  } else {
+    sendData("#clkdi");
+  }
+}
+function clockTimeZoneButtonCommand() {
+  let sanitizer = checkUserString(clockTimeZone.value(), 5);
+  if (sanitizer!=null) {
+    clockTimeZone.value("err");
+    return;
+  }
+  if (isNaN(clockTimeZone.value())) {
+    clockTimeZone.value("err");
+    return;
+  }
+  if (clockTimeZone.value() > 14 || clockTimeZone.value() <-12) {
+    clockTimeZone.value("err");
+    return;
+  }
+  sendData("#clkzn,"+clockTimeZone.value());
+}
+function clockSetTimeNTPCommand() {
+  document.getElementById("currentTimeID").innerHTML = "PLEASE WAIT... GETTING TIME";
+  sendData("#clkNTPset,");
+}
+function clockAppendCommand() {
+  if (clockAppendCheckbox.checked()) {
+    sendData("#clkappen");
+  } else {
+    sendData("#clkappdi");
+  }
+}
+function clockAppendAlarmCommand() {
+  if (clockAppendAlarmCheckbox.checked()) {
+    sendData("#clkalmappen");
+  } else {
+    sendData("#clkalmappdi");
+  }
+}
+function clockAlarmEnableCommand() {
+  if (clockAlarmEnableCheckbox.checked()) {
+    sendData("#clkalmen");
+  } else {
+    sendData("#clkalmdi");
+  }
+}
+function clockAlarmButtonCommand() {
+  let sanitizer = checkUserString(clockAlarmHour.value(), 5);
+  if (sanitizer!=null) {
+    clockAlarmHour.value("err");
+    return;
+  }
+  if (isNaN(clockAlarmHour.value())) {
+    clockAlarmHour.value("err");
+    return;
+  }
+  if (clockAlarmHour.value() > 23 || clockAlarmHour.value() <0) {
+    clockAlarmHour.value("err");
+    return;
+  }
 
+  sanitizer = checkUserString(clockAlarmMinute.value(), 5);
+  if (sanitizer!=null) {
+    clockAlarmMinute.value("err");
+    return;
+  }
+  if (isNaN(clockAlarmMinute.value())) {
+    clockAlarmMinute.value("err");
+    return;
+  }
+  if (clockAlarmMinute.value() > 59 || clockAlarmMinute.value() <0) {
+    clockAlarmMinute.value("err");
+    return;
+  }
+  sendData("#clkalmtim,"+clockAlarmHour.value() + "," + clockAlarmMinute.value());
+}
+function clockNTPupdateonAlarmCommand() {
+  if (clockNTPupdateonAlarmCheckbox.checked()) {
+    sendData("#clkNTPen");
+  } else {
+    sendData("#clkNTPdi");
+  }
+}
+function clockAlarmMessageButtonCommand() {
+  let sanitizer = checkUserString(clockAlarmMessage.value(), 50);
+  if (sanitizer!=null) {
+    clockAlarmMessage.value(sanitizer);
+    return;
+  }
+  sendData("#clkalarMsg,"+clockAlarmMessage.value());
+}
 
 function saveWiFi() {
   let sanitizer = checkUserString(ssidInput.value(), 50);
@@ -213,6 +305,28 @@ function iftttKeySaveCommand() {
     return;
   }
   sendData("#ifk,"+iftttInput.value());
+}
+
+function telegramEnableCommand() {
+  if (telegramEnableCheckbox.checked()) {
+    sendData("#teleEN");
+  } else {
+    sendData("#teleDI");
+  }
+}
+
+function telegramSaveCommand() {
+  let sanitizer = checkUserString(telegramBOTInput.value(), 50);
+  if (sanitizer!=null) {
+    telegramBOTInput.value("");
+    return;
+  }
+  sanitizer = checkUserString(telegramCHATInput.value(), 50);
+  if (sanitizer!=null) {
+    telegramCHATInput.value("");
+    return;
+  }
+  sendData("#telcrd,"+telegramBOTInput.value() +","+telegramCHATInput.value());
 }
 
 //function udpEnableCommand() {

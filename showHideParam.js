@@ -142,6 +142,13 @@ function showAllParam() {
   batteryOffsetTitle.show();
   batteryOffsetInput.show();
   batteryOffsetButton.show();
+
+  clockTimerEnableTitle.show();
+  clockTimerEnableCheckbox.show();
+  clockTimerEnableButton.show();
+  telegramEnableTitle.show();
+  telegramEnableCheckbox.show();
+  telegramEnableButton.show();
 }
 function hideAllParam() {
   udpEnabled = false;
@@ -285,4 +292,42 @@ function hideAllParam() {
   batteryOffsetTitle.hide();
   batteryOffsetInput.hide();
   batteryOffsetButton.hide();
+
+  clockTimerEnableTitle.hide();
+  clockTimerEnableCheckbox.hide();
+  clockTimerEnableButton.hide();
+  clockCurrentTime.hide();
+  clockTimeZoneTitle.hide();
+  clockTimeZone.hide();
+  clockTimeZoneButton.hide();
+  clockSetTimeNTPtitle.hide();
+  clockSetTimeButton.hide();
+  clockAppendTitle.hide();
+  clockAppendCheckbox.hide();
+  clockAppendButton.hide();
+  clockAlarmEnableTitle.hide();
+  clockAlarmEnableCheckbox.hide();
+  clockAlarmEnableButton.hide();
+  clockAlarmSettingTitle.hide();
+  clockAlarmHour.hide();
+  clockAlarmMinute.hide();
+  clockAlarmButton.hide();
+  clockNTPupdateonAlarmTitle.hide();
+  clockNTPupdateonAlarmCheckbox.hide();
+  clockNTPupdateonAlarmButton.hide();
+  clockAlarmMessageTitle.hide();
+  clockAlarmMessage.hide();
+  clockAlarmMessageButton.hide();
+  clockAppendAlarmTitle.hide();
+  clockAppendAlarmCheckbox.hide();
+  clockAppendAlarmButton.hide();
+  telegramEnableTitle.hide();
+  telegramEnableCheckbox.hide();
+  telegramEnableButton.hide();
+  telegramCredentTitle.hide();
+  telegramBOTTitle.hide();
+  telegramBOTInput.hide();
+  telegramCHATTitle.hide();
+  telegramCHATInput.hide();
+  telegramSaveButton.hide();
 }

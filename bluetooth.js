@@ -70,6 +70,10 @@ function gotValue(value) {
     fwVersion = splitString[6];
     ipAddress = splitString[7];
     connectedSSID = splitString[8];
+    //here is where time can go
+    if (splitString[9]!=null) {
+      document.getElementById("currentTimeID").innerHTML = splitString[9];
+    }
 
     if (firstConnected) {
       sendData("#param,");
@@ -246,6 +250,32 @@ function gotValue(value) {
   if (splitString[0]=='ifk') {//ifttt key
     iftttInput.value(splitString[1]);
   }
+  if (splitString[0]=='telegramEnable') {//telegram enable
+    if (splitString[1]=='t') {
+      telegramEnableCheckbox.checked(true);
+      telegramCredentTitle.show();
+      telegramBOTTitle.show();
+      telegramBOTInput.show();
+      telegramCHATTitle.show();
+      telegramCHATInput.show();
+      telegramSaveButton.show();
+    } else {
+      iftttEnableCheckbox.checked(false);
+      telegramCredentTitle.hide();
+      telegramBOTTitle.hide();
+      telegramBOTInput.hide();
+      telegramCHATTitle.hide();
+      telegramCHATInput.hide();
+      telegramSaveButton.hide();
+    }
+  }
+  if (splitString[0]=='telegramBOT') {//telegram bot token
+    telegramBOTInput.value(splitString[1]);
+  }
+  if (splitString[0]=='telegramCHAT') {//telegram chat ID
+    telegramCHATInput.value(splitString[1]);
+  }
+
 
   if (splitString[0]=='ude') {//udp enable
     udpEnabled=false;
@@ -341,6 +371,7 @@ function gotValue(value) {
     udpBlastCountInput.hide();
     udpBlastTimeTitle.hide();
     udpBlastTimeInput.hide();
+    tcpReCountTitle.hide();
   }
 
   if (splitString[0]=='udt') {//udp settings
@@ -511,9 +542,113 @@ function gotValue(value) {
       highSpeedEnableCheckbox.checked(false);
     }
   }
-
-
-
+  if (splitString[0]=='clkEnable') {//clock enable
+    if (splitString[1]=='t') {
+      clockTimerEnableCheckbox.checked(true);
+      clockCurrentTime.show();
+      clockTimeZoneTitle.show();
+      clockTimeZone.show();
+      clockTimeZoneButton.show();
+      clockSetTimeNTPtitle.show();
+      clockSetTimeButton.show();
+      clockAppendTitle.show();
+      clockAppendCheckbox.show();
+      clockAppendButton.show();
+      clockAlarmEnableTitle.show();
+      clockAlarmEnableCheckbox.show();
+      clockAlarmEnableButton.show();
+    } else {
+      clockTimerEnableCheckbox.checked(false);
+      clockCurrentTime.hide();
+      clockTimeZoneTitle.hide();
+      clockTimeZone.hide();
+      clockTimeZoneButton.hide();
+      clockSetTimeNTPtitle.hide();
+      clockSetTimeButton.hide();
+      clockAppendTitle.hide();
+      clockAppendCheckbox.hide();
+      clockAppendButton.hide();
+      clockAlarmEnableTitle.hide();
+      clockAlarmEnableCheckbox.hide();
+      clockAlarmEnableButton.hide();
+      clockAlarmSettingTitle.hide();
+      clockAlarmHour.hide();
+      clockAlarmMinute.hide();
+      clockAlarmButton.hide();
+      clockNTPupdateonAlarmTitle.hide();
+      clockNTPupdateonAlarmCheckbox.hide();
+      clockNTPupdateonAlarmButton.hide();
+      clockAlarmMessageTitle.hide();
+      clockAlarmMessage.hide();
+      clockAlarmMessageButton.hide();
+    }
+  }
+  if (splitString[0]=='clkTimeZone') {//clock time zone
+    clockTimeZone.value(splitString[1]);
+  }
+  if (splitString[0]=='clkAppendEnable') {//clock append enable
+    if (splitString[1]=='t') {
+      clockAppendCheckbox.checked(true);
+    } else {
+      clockAppendCheckbox.checked(false);
+    }
+  }
+  if (splitString[0]=='clkAlarmEnable') {//clock append enable
+    if (splitString[1]=='t') {
+      clockAlarmEnableCheckbox.checked(true);
+      clockAlarmSettingTitle.show();
+      clockAlarmHour.show();
+      clockAlarmMinute.show();
+      clockAlarmButton.show();
+      clockNTPupdateonAlarmTitle.show();
+      clockNTPupdateonAlarmCheckbox.show();
+      clockNTPupdateonAlarmButton.show();
+      clockAlarmMessageTitle.show();
+      clockAlarmMessage.show();
+      clockAlarmMessageButton.show();
+      clockAppendAlarmTitle.show();
+      clockAppendAlarmCheckbox.show();
+      clockAppendAlarmButton.show();
+    } else {
+      clockAlarmEnableCheckbox.checked(false);
+      clockAlarmSettingTitle.hide();
+      clockAlarmHour.hide();
+      clockAlarmMinute.hide();
+      clockAlarmButton.hide();
+      clockNTPupdateonAlarmTitle.hide();
+      clockNTPupdateonAlarmCheckbox.hide();
+      clockNTPupdateonAlarmButton.hide();
+      clockAlarmMessageTitle.hide();
+      clockAlarmMessage.hide();
+      clockAlarmMessageButton.hide();
+      clockAppendAlarmTitle.hide();
+      clockAppendAlarmCheckbox.hide();
+      clockAppendAlarmButton.hide();
+    }
+  }
+  if (splitString[0]=='clkAlarmHour') {//clock alarm hour
+    clockAlarmHour.value(splitString[1]);
+  }
+  if (splitString[0]=='clkAlarmMinute') {//clock alarm hour
+    clockAlarmMinute.value(splitString[1]);
+  }
+  if (splitString[0]=='clkUpdateNPTenable') {//clock NPT update
+    if (splitString[1]=='t') {
+      clockNTPupdateonAlarmCheckbox.checked(true);
+    } else {
+      clockNTPupdateonAlarmCheckbox.checked(false);
+    }
+  }
+  if (splitString[0]=='clkAlarmMessage') {//clock alarm message
+    clockAlarmMessage.value(splitString[1]);
+  }
+  if (splitString[0]=='clkAppendAlmEnable') {//clock alarm append time
+    if (splitString[1]=='t') {
+      clockAppendAlarmCheckbox.checked(true);
+    } else {
+      clockAppendAlarmCheckbox.checked(false);
+    }
+  }
   if (splitString[0]=='OTAprog') {//OTA IS IN PROGRESS
     OTAinProgress=splitString[1];
     OTAisActive = true;

@@ -1,6 +1,5 @@
 //ALL DATA SENT OUT FROM THE GUI TOO THE BOARD HERE
 
-
 // to sanitize strings **********
 function checkUserString(userString, lengthCheck) {
   if (match(userString, "#") != null || match(userString, ",") != null) {
@@ -624,4 +623,7 @@ function readDocsCommand() {
 }
 function contactCommand() {
   window.open('https://www.kdcircuits.com#contact');
+}
+function otaGUICommand(){
+  window.open('https://github.com/krdarrah/ESP32_GUI_Programmer');
 }

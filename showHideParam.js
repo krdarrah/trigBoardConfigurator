@@ -330,4 +330,6 @@ function hideAllParam() {
   telegramCHATTitle.hide();
   telegramCHATInput.hide();
   telegramSaveButton.hide();
+  otaStartButton.hide();
+  otaHelpTextTitle.hide();
 }

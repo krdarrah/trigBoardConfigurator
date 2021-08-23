@@ -52,6 +52,15 @@ function setup() {
   otaStartButton = createButton('Initialize OTA');
   otaStartButton.position(15, 180);
   otaStartButton.mousePressed(otaStartCommand);
+  otaHelpTextTitle = createElement('h5', 'OTA Updates<br>can be Initialized<br>when Connected<br>to WiFi');
+  otaHelpTextTitle.position(15, 180);
+
+  otaGUIButton = createButton('Get OTA Utility <br>for Wireless<br>FW Updates');
+  otaGUIButton.position(380, 240);
+  otaGUIButton.style('color', color(255));
+  otaGUIButton.style('background-color', color(62, 129, 182));
+  otaGUIButton.mousePressed(otaGUICommand);
+
 
   readDocsButton = createButton('REFERENCE');
   readDocsButton.position(380, 150);
@@ -72,7 +81,7 @@ function setup() {
   //espotaButton.mousePressed(espotacommand);
   ////binFileInput = createFileInput(handleFile);
   ////binFileInput.position(380, 320);
-  
+
   let yPositionStart = 600;
   ssidTitle = createElement('h3', 'WiFi SSID (2.4GHz)');
   ssidTitle.position(10, yPositionStart);
@@ -244,7 +253,8 @@ function setup() {
   clockTimeZoneButton = createButton('Save');
   clockTimeZoneButton.position(clockTimeZone.x+clockTimeZone.width, clockTimeZone.y);
   clockTimeZoneButton.mousePressed(clockTimeZoneButtonCommand);
-  clockSetTimeNTPtitle = createElement('h4', 'Set Time with NTP server - connect to WiFi First above!');
+  clockSetTimeNTPtitle = createElement('h4', 'Set Time with NTP server');
+  clockSetTimeNTPtitle.id('clockSetTimeNTPtitleID');
   clockSetTimeNTPtitle.position(20, clockTimeZoneTitle.size().height+clockTimeZoneTitle.y+5);
   clockSetTimeButton = createButton('Set');
   clockSetTimeButton.position(clockSetTimeNTPtitle.x+clockSetTimeNTPtitle.size().width+10, clockSetTimeNTPtitle.y+clockSetTimeNTPtitle.size().height);

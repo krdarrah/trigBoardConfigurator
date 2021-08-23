@@ -75,6 +75,14 @@ function gotValue(value) {
       document.getElementById("currentTimeID").innerHTML = splitString[9];
     }
 
+    if (wifiConnected) {
+      otaStartButton.show();
+      otaHelpTextTitle.hide();
+    } else {
+      otaStartButton.hide();
+      otaHelpTextTitle.show();
+    }
+
     if (firstConnected) {
       sendData("#param,");
     }
@@ -550,7 +558,6 @@ function gotValue(value) {
       clockTimeZone.show();
       clockTimeZoneButton.show();
       clockSetTimeNTPtitle.show();
-      clockSetTimeButton.show();
       clockAppendTitle.show();
       clockAppendCheckbox.show();
       clockAppendButton.show();
@@ -583,6 +590,15 @@ function gotValue(value) {
       clockAlarmMessageButton.hide();
     }
   }
+
+  if (wifiConnected && clockTimerEnableCheckbox.checked()) {
+    document.getElementById("clockSetTimeNTPtitleID").innerHTML = "Set Time with NTP server ";
+    clockSetTimeButton.show();
+  } else {
+    document.getElementById("clockSetTimeNTPtitleID").innerHTML = "Note: Connect to WiFi to set Time from NTP Server! ";
+    clockSetTimeButton.hide();
+  }
+
   if (splitString[0]=='clkTimeZone') {//clock time zone
     clockTimeZone.value(splitString[1]);
   }

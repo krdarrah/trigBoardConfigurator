@@ -625,5 +625,5 @@ function contactCommand() {
   window.open('https://www.kdcircuits.com#contact');
 }
 function otaGUICommand(){
-  window.open('https://github.com/krdarrah/ESP32_GUI_Programmer');
+  window.open('https://github.com/krdarrah/trigUpdater/releases');
 }

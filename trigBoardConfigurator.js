@@ -307,8 +307,32 @@ function setup() {
   clockAppendAlarmButton.position(clockAppendAlarmTitle.size().width+clockAppendAlarmTitle.x+40, clockAppendAlarmTitle.size().height+clockAppendAlarmTitle.y);
   clockAppendAlarmButton.mousePressed(clockAppendAlarmCommand); 
   //**************************************
+  appendRSSIenableTitle = createElement('h4', 'Append RSSI (Signal Strength) to Push Message: (supported in FW 11/29/21 or newer)');
+  appendRSSIenableTitle.position(10, clockAppendAlarmTitle.size().height+clockAppendAlarmTitle.y+5);
+  appendRSSIenableCheckbox = createCheckbox('', false);
+  appendRSSIenableCheckbox.position(appendRSSIenableTitle.size().width+appendRSSIenableTitle.x+10, appendRSSIenableTitle.size().height+appendRSSIenableTitle.y);
+  appendRSSIenableButton = createButton('Save');
+  appendRSSIenableButton.position(appendRSSIenableTitle.size().width+appendRSSIenableTitle.x+40, appendRSSIenableTitle.size().height+appendRSSIenableTitle.y);
+  appendRSSIenableButton.mousePressed(appendRSSIenableCommand); 
+  //**************************************
+  missionCriticalEnableTitle = createElement('h4', 'Mission Critical Check: (supported in FW 11/29/21 or newer)');
+  missionCriticalEnableTitle.position(10, appendRSSIenableTitle.size().height+appendRSSIenableTitle.y+5);
+  missionCriticalEnableCheckbox = createCheckbox('', false);
+  missionCriticalEnableCheckbox.position(missionCriticalEnableTitle.size().width+missionCriticalEnableTitle.x+10, missionCriticalEnableTitle.size().height+missionCriticalEnableTitle.y);
+  missionCriticalEnableButton = createButton('Save');
+  missionCriticalEnableButton.position(missionCriticalEnableTitle.size().width+missionCriticalEnableTitle.x+40, missionCriticalEnableTitle.size().height+missionCriticalEnableTitle.y);
+  missionCriticalEnableButton.mousePressed(missionCriticalEnableCommand); 
+  missionCriticalTimeTitle = createElement('h4', 'Seconds (1-60) to verify contact after wake');
+  missionCriticalTimeTitle.position(30, missionCriticalEnableTitle.size().height+missionCriticalEnableTitle.y+5);
+  missionCriticalTimeInput = createInput('');
+  missionCriticalTimeInput.size(50);
+  missionCriticalTimeInput.position(missionCriticalTimeTitle.size().width+missionCriticalTimeTitle.x+10, missionCriticalTimeTitle.size().height+missionCriticalTimeTitle.y);  
+  missionCriticalTimeButton = createButton('Save');
+  missionCriticalTimeButton.position(missionCriticalTimeInput.x+missionCriticalTimeInput.width, missionCriticalTimeInput.y);
+  missionCriticalTimeButton.mousePressed(missionCriticalTimeCommand);
+  //**************************************
   loBatteryTitle = createElement('h4', 'Low Battery Voltage Threshold:');
-  loBatteryTitle.position(10, clockAppendAlarmTitle.size().height+clockAppendAlarmTitle.y+5);
+  loBatteryTitle.position(10, missionCriticalTimeTitle.size().height+missionCriticalTimeTitle.y+5);
   loBatteryInput = createInput('');
   loBatteryInput.size(40);
   loBatteryInput.position(loBatteryTitle.size().width+loBatteryTitle.x+10, loBatteryTitle.size().height+loBatteryTitle.y);  

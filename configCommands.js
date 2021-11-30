@@ -28,6 +28,40 @@ function checkUserIPaddress(userIP) {
 }
 //******************
 
+function appendRSSIenableCommand() {
+  if (appendRSSIenableCheckbox.checked()) {
+    sendData("#rssien");
+  } else {
+    sendData("#rssidi");
+  }
+}
+
+function missionCriticalEnableCommand() {
+  if (missionCriticalEnableCheckbox.checked()) {
+    sendData("#missionen");
+  } else {
+    sendData("#missiondi");
+  }
+}
+
+function missionCriticalTimeCommand() {
+  let sanitizer = checkUserString(missionCriticalTimeInput.value(), 3);
+  if (sanitizer!=null) {
+    missionCriticalTimeInput.value("err");
+    return;
+  }
+  if (isNaN(missionCriticalTimeInput.value())) {
+    missionCriticalTimeInput.value("err");
+    return;
+  }
+  if (missionCriticalTimeInput.value() > 60 || missionCriticalTimeInput.value() <=0) {
+    missionCriticalTimeInput.value("err");
+    return;
+  }
+  sendData("#tmiss,"+missionCriticalTimeInput.value());
+}
+
+
 function clockTimerEnableCommand() {
   if (clockTimerEnableCheckbox.checked()) {
     sendData("#clken");
@@ -624,6 +658,6 @@ function readDocsCommand() {
 function contactCommand() {
   window.open('https://www.kdcircuits.com#contact');
 }
-function otaGUICommand(){
+function otaGUICommand() {
   window.open('https://github.com/krdarrah/trigUpdater/releases');
 }

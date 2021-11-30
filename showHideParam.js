@@ -149,6 +149,14 @@ function showAllParam() {
   telegramEnableTitle.show();
   telegramEnableCheckbox.show();
   telegramEnableButton.show();
+
+  appendRSSIenableTitle.show();
+  appendRSSIenableCheckbox.show();
+  appendRSSIenableButton.show();
+  missionCriticalEnableTitle.show();
+  missionCriticalEnableCheckbox.show();
+  missionCriticalEnableButton.show();
+
 }
 function hideAllParam() {
   udpEnabled = false;
@@ -332,4 +340,13 @@ function hideAllParam() {
   telegramSaveButton.hide();
   otaStartButton.hide();
   otaHelpTextTitle.hide();
+  appendRSSIenableTitle.hide();
+  appendRSSIenableCheckbox.hide();
+  appendRSSIenableButton.hide();
+  missionCriticalEnableTitle.hide();
+  missionCriticalEnableCheckbox.hide();
+  missionCriticalEnableButton.hide();
+  missionCriticalTimeTitle.hide();
+  missionCriticalTimeInput.hide();
+  missionCriticalTimeButton.hide();
 }

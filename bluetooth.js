@@ -665,6 +665,34 @@ function gotValue(value) {
       clockAppendAlarmCheckbox.checked(false);
     }
   }
+
+  if (splitString[0]=='appendRSSI') {//append rssi
+    if (splitString[1]=='t') {
+      appendRSSIenableCheckbox.checked(true);
+    } else {
+      appendRSSIenableCheckbox.checked(false);
+    }
+  }
+
+  if (splitString[0]=='missionEnable') {//mission critical enable
+    if (splitString[1]=='t') {
+      missionCriticalEnableCheckbox.checked(true);
+      missionCriticalTimeTitle.show();
+      missionCriticalTimeInput.show();
+      missionCriticalTimeButton.show();
+    } else {
+      missionCriticalEnableCheckbox.checked(false);
+      missionCriticalTimeTitle.hide();
+      missionCriticalTimeInput.hide();
+      missionCriticalTimeButton.hide();
+    }
+  }
+
+  if (splitString[0]=='missionTimeafter') {//mission critical time
+    missionCriticalTimeInput.value(splitString[1]);
+  }
+
+
   if (splitString[0]=='OTAprog') {//OTA IS IN PROGRESS
     OTAinProgress=splitString[1];
     OTAisActive = true;

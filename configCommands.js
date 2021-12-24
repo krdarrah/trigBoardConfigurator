@@ -511,11 +511,11 @@ function mqttKeySaveCommand() {
     mqttUserInput.value(sanitize);
     return;
   }
-  sanitize = checkUserIPaddress(mqttServerInput.value());
-  if (sanitize!=null) {
-    mqttServerInput.value(sanitize);
-    return;
-  }
+  //sanitize = checkUserIPaddress(mqttServerInput.value());
+  //if (sanitize!=null) {
+  //  mqttServerInput.value(sanitize);
+  //  return;
+  //}
   sanitize = checkUserString(mqttServerInput.value(), 20);
   if (sanitize!=null) {
     mqttServerInput.value(sanitize);

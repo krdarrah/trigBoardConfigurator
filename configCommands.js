@@ -516,7 +516,7 @@ function mqttKeySaveCommand() {
   //  mqttServerInput.value(sanitize);
   //  return;
   //}
-  sanitize = checkUserString(mqttServerInput.value(), 20);
+  sanitize = checkUserString(mqttServerInput.value(), 50);
   if (sanitize!=null) {
     mqttServerInput.value(sanitize);
     return;

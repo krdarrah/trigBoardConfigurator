@@ -1,0 +1,24 @@
+{
+  "name": "trigboardconfigurator",
+  "version": "1.0.0",
+  "description": "Latest here: https://krdarrah.github.io/trigBoardConfigurator/",
+  "main": "server/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./server/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdconaway/trigBoardConfigurator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdconaway/trigBoardConfigurator/issues"
+  },
+  "homepage": "https://github.com/mdconaway/trigBoardConfigurator#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "node-forge": "^1.3.1"
+  }
+}

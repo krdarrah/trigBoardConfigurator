@@ -10,4 +10,4 @@ const selfSignedCertificateFactory = new CertificateFactory({});
 Object.assign(httpsOptions, selfSignedCertificateFactory.getStaticBundle('buffer'));
 https.createServer(httpsOptions, app).listen(1337);
 
-console.log('Trigboard server running at https://localhost:1337/')
+console.log('Trigboard server running at https://localhost:1337/');

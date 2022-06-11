@@ -1,0 +1,34 @@
+{
+  "name": "trigboardconfigurator",
+  "version": "1.0.0",
+  "description": "Latest here: https://krdarrah.github.io/trigBoardConfigurator/",
+  "main": "server/main.js",
+  "author":{
+    "name" : "Kevin Darrah",
+    "email" : "krdarrah@oreply.github.com",
+    "url" : "https://trigboard-docs.readthedocs.io/en/latest/index.html"
+  },
+  "contributors": [
+    {
+      "name" : "Michael Conaway",
+      "email" : "mdconaway@noreply.github.com",
+      "url" : "https://github.com/mdconaway"
+    }
+  ],
+  "scripts": {
+    "start": "node ./server/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krdarrah/trigBoardConfigurator.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krdarrah/trigBoardConfigurator/issues"
+  },
+  "homepage": "https://github.com/krdarrah/trigBoardConfigurator#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "node-forge": "^1.3.1"
+  }
+}

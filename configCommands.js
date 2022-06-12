@@ -1,4 +1,26 @@
 //ALL DATA SENT OUT FROM THE GUI TOO THE BOARD HERE
+function splitStringBySegmentLength(source, segmentLength) {
+  if (!segmentLength || segmentLength < 1) {
+    throw Error('Segment length must be defined and greater than/equal to 1');
+  } 
+  const target = [];
+  for (
+      const array = Array.from(source);
+      array.length;
+      target.push(array.splice(0,segmentLength).join('')));
+  return target;
+}
+
+//A method to break data across multiple writes
+const tryChunks = function (dataStrings) {
+  if(dataStrings.length) {
+    let data = dataStrings.shift();
+    console.log(`Sending[${data.length}B]: ${data}`);
+    sendData(data).then(() => {
+      tryChunks(dataStrings);
+    });
+  }
+};
 
 // to sanitize strings **********
 function checkUserString(userString, lengthCheck) {
@@ -500,6 +522,65 @@ function mqttEnableCommand() {
     sendData("#mqdi");
   }
 }
+
+//Need to break data transfer into 512 byte chunks
+function mqttSSLKeySaveCommand() {
+  let SSLKey = mqttSSLKey.value().trim();
+  let command = '#mqsslke,';
+  let write = 'w,';
+  let append = 'a,';
+  let commandSize = command.length + write.length;
+  let commandStrings = splitStringBySegmentLength(SSLKey, 512 - commandSize).map((val, i) => {
+    return command + (i ? append : write) + val;
+  });
+  
+  if(SSLKey.length === 0) {
+    //this will erase the key
+    sendData(command+write+'');
+  } else {
+    console.log(commandStrings);
+    tryChunks(commandStrings);
+  }
+}
+
+function mqttSSLCertSaveCommand() {
+  let SSLCert = mqttSSLCert.value().trim();
+  let command = '#mqsslce,';
+  let write = 'w,';
+  let append = 'a,';
+  let commandSize = command.length + write.length;
+  let commandStrings = splitStringBySegmentLength(SSLCert, 512 - commandSize).map((val, i) => {
+    return command + (i ? append : write) + val;
+  });
+  
+  if(SSLCert.length === 0) {
+    //this will erase the key
+    sendData(command+write+'');
+  } else {
+    console.log(commandStrings);
+    tryChunks(commandStrings);
+  }
+}
+
+function mqttSSLCASaveCommand() {
+  let SSLCA = mqttSSLCA.value().trim();
+  let command = '#mqsslca,';
+  let write = 'w,';
+  let append = 'a,';
+  let commandSize = command.length + write.length;
+  let commandStrings = splitStringBySegmentLength(SSLCA, 512 - commandSize).map((val, i) => {
+    return command + (i ? append : write) + val;
+  });
+  
+  if(SSLCA.length === 0) {
+    //this will erase the key
+    sendData(command+write+'');
+  } else {
+    console.log(commandStrings);
+    tryChunks(commandStrings);
+  }
+}
+
 function mqttKeySaveCommand() {
   let sanitize = checkUserString(mqttUserInput.value(), 50);
   if (sanitize!=null) {

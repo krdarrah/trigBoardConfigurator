@@ -525,10 +525,36 @@ function setup() {
   mqttPWTitle.position(50, mqttUserTitle.size().height+mqttUserTitle.y+5);
   mqttPWInput = createInput('', 'password');
   mqttPWInput.position(mqttPWTitle.size().width+mqttPWTitle.x+10, mqttPWTitle.size().height+mqttPWTitle.y);
-
+  mqttSSLKeyTitle = createElement('h4', 'SSL Key (Optional):');
+  mqttSSLKeyTitle.position(50, mqttPWTitle.size().height+mqttPWTitle.y+5);
+  mqttSSLKey = createElement('textarea');
+  mqttSSLKey.attribute('rows', '1');
+  mqttSSLKey.attribute('cols', '50');
+  mqttSSLKey.position(mqttSSLKeyTitle.size().width+mqttSSLKeyTitle.x+10, mqttSSLKeyTitle.size().height+mqttSSLKeyTitle.y);
+  mqttSSLKeySaveButton = createButton('Save');
+  mqttSSLKeySaveButton.position(mqttSSLKeyTitle.x-(mqttSSLKeySaveButton.width+5), mqttSSLKey.y);
+  mqttSSLKeySaveButton.mousePressed(mqttSSLKeySaveCommand);
+  mqttSSLCertTitle = createElement('h4', 'SSL Cert (Optional):');
+  mqttSSLCertTitle.position(50, mqttSSLKeyTitle.size().height+mqttSSLKeyTitle.y+5);
+  mqttSSLCert = createElement('textarea');
+  mqttSSLCert.attribute('rows', '1');
+  mqttSSLCert.attribute('cols', '50');
+  mqttSSLCert.position(mqttSSLCertTitle.size().width+mqttSSLCertTitle.x+10, mqttSSLCertTitle.size().height+mqttSSLCertTitle.y);
+  mqttSSLCertSaveButton = createButton('Save');
+  mqttSSLCertSaveButton.position(mqttSSLCertTitle.x-(mqttSSLCertSaveButton.width+5), mqttSSLCert.y);
+  mqttSSLCertSaveButton.mousePressed(mqttSSLCertSaveCommand);
+  mqttSSLCATitle = createElement('h4', 'SSL CA (Optional):');
+  mqttSSLCATitle.position(50, mqttSSLCertTitle.size().height+mqttSSLCertTitle.y+5);
+  mqttSSLCA = createElement('textarea');
+  mqttSSLCA.attribute('rows', '1');
+  mqttSSLCA.attribute('cols', '50');
+  mqttSSLCA.position(mqttSSLCATitle.size().width+mqttSSLCATitle.x+10, mqttSSLCATitle.size().height+mqttSSLCATitle.y);
+  mqttSSLCASaveButton = createButton('Save');
+  mqttSSLCASaveButton.position(mqttSSLCATitle.x-(mqttSSLCASaveButton.width+5), mqttSSLCA.y);
+  mqttSSLCASaveButton.mousePressed(mqttSSLCASaveCommand);
   //**************************************
   mqttTitle = createElement('h4', 'mqtt Settings:');
-  mqttTitle.position(30, mqttPWTitle.size().height+mqttPWTitle.y+5);
+  mqttTitle.position(30, mqttSSLCATitle.size().height+mqttSSLCATitle.y+5);
   mqttPortTitle = createElement('h4', 'Port:');
   mqttPortTitle.position(50, mqttTitle.size().height+mqttTitle.y+5);
   mqttPortInput = createInput('');

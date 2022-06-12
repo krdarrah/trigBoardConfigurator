@@ -452,6 +452,12 @@ function gotValue(value) {
       mqttUserInput.hide();
       mqttPWTitle.hide();
       mqttPWInput.hide();
+      mqttSSLKeyTitle.hide();
+      mqttSSLKey.hide();
+      mqttSSLCertTitle.hide();
+      mqttSSLCert.hide();
+      mqttSSLCATitle.hide();
+      mqttSSLCA.hide();
     }
   }
 
@@ -474,12 +480,29 @@ function gotValue(value) {
       mqttUserInput.show();
       mqttPWTitle.show();
       mqttPWInput.show();
+      mqttSSLKeyTitle.show();
+      mqttSSLKey.show();
+      mqttSSLKeySaveButton.show();
+      mqttSSLCertTitle.show();
+      mqttSSLCert.show();
+      mqttSSLCertSaveButton.show();
+      mqttSSLCATitle.show();
+      mqttSSLCA.show();
+      mqttSSLCASaveButton.show();
     } else {
       mqttSecEnableCheckbox.checked(false);
       mqttUserTitle.hide();
       mqttUserInput.hide();
       mqttPWTitle.hide();
       mqttPWInput.hide();
+      mqttSSLKey.hide();
+      mqttSSLKeySaveButton.hide();
+      mqttSSLCertTitle.hide();
+      mqttSSLCert.hide();
+      mqttSSLCertSaveButton.hide();
+      mqttSSLCATitle.hide();
+      mqttSSLCA.hide();
+      mqttSSLCASaveButton.hide();
     }
   }
 
@@ -491,6 +514,27 @@ function gotValue(value) {
   }
   if (splitString[0]=='mqsp') {//mqtt user 
     mqttPWInput.value(splitString[1]);
+  }
+  if (splitString[0]=='mqsske') {//mqtt user 
+    if(splitString[1] === 'w') {
+      mqttSSLKey.value(splitString[2]);
+    } else {
+      mqttSSLKey.value(mqttSSLKey.value() + splitString[2]);
+    }
+  }
+  if (splitString[0]=='mqssce') {//mqtt user 
+    if(splitString[1] === 'w') {
+      mqttSSLCert.value(splitString[2]);
+    } else {
+      mqttSSLCert.value(mqttSSLCert.value() + splitString[2]);
+    }
+  }
+  if (splitString[0]=='mqssca') {//mqtt user 
+    if(splitString[1] === 'w') {
+      mqttSSLCA.value(splitString[2]);
+    } else {
+      mqttSSLCA.value(mqttSSLCA.value() + splitString[2]);
+    }
   }
   if (splitString[0]=='sipen') {//static ip enable 
     if (splitString[1]=='t') {
@@ -714,5 +758,5 @@ function sendData(data) {
     console.log("Sorry, this browser does not support TextEncoder...");
   }
   var enc = new TextEncoder(); // always utf-8
-  blueToothTXCharacteristic.writeValue(enc.encode(inputValue));
+  return blueToothTXCharacteristic.writeValue(enc.encode(inputValue));
 }
